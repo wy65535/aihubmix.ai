@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>功能特性 - AIHubMix统一AI模型API平台 | 开发者首选</title>
+    <meta name="description" content="AIHubMix提供统一API接口、200+模型支持、无限并发、智能路由、多模态支持等强大功能，是开发者构建AI应用的最佳选择。">
+    <meta name="keywords" content="AI API功能, 统一API接口, 模型切换, AI开发工具, OpenAI替代, 多模型支持">
+    <link rel="canonical" href="https://aihubmix.ai/features.html">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2563eb;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+        
+        .cta-button {
+            background: #2563eb;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #1d4ed8;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+        }
+        
+        .content-section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #1e293b;
+        }
+        
+        .features-detail {
+            display: grid;
+            gap: 3rem;
+        }
+        
+        .feature-detail {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: center;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .feature-detail:nth-child(even) {
+            grid-template-columns: 2fr 1fr;
+        }
+        
+        .feature-detail:nth-child(even) .feature-icon {
+            order: 2;
+        }
+        
+        .feature-icon-large {
+            font-size: 5rem;
+            text-align: center;
+        }
+        
+        .feature-detail h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+        
+        .feature-detail p {
+            color: #64748b;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .feature-detail ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-detail li {
+            padding: 0.5rem 0;
+            color: #64748b;
+        }
+        
+        .feature-detail li:before {
+            content: "✓ ";
+            color: #2563eb;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th {
+            background: #2563eb;
+            color: #fff;
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .check {
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .cross {
+            color: #ef4444;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .cta-section {
+            padding: 5rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .primary-btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            background: #fff;
+            color: #667eea;
+            display: inline-block;
+        }
+        
+        footer {
+            background: #1e293b;
+            color: #fff;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #fff;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .feature-detail {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-detail:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-detail:nth-child(even) .feature-icon {
+                order: 1;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">AIHubMix</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="features.html">功能特性</a></li>
+                    <li><a href="pricing.html">价格对比</a></li>
+                    <li><a href="comparison.html">竞品对比</a></li>
+                    <li><a href="use-cases.html">使用案例</a></li>
+                    <li><a href="faq.html">常见问题</a></li>
+                </ul>
+                <a href="https://aihubmix.com/?aff=P46I" class="cta-button" target="_blank" rel="noopener">立即开始</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>强大的功能特性</h1>
+            <p>为AI开发者量身打造的完整解决方案</p>
+        </div>
+    </div>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">核心功能</h2>
+            <div class="features-detail">
+                <div class="feature-detail">
+                    <div class="feature-icon-large">🚀</div>
+                    <div class="feature-content">
+                        <h3>200+ AI模型全覆盖</h3>
+                        <p>AIHubMix支持市面上几乎所有主流AI模型，无论您需要什么类型的AI能力，都能在这里找到最适合的模型。</p>
+                        <ul>
+                            <li>文本生成：GPT-4、GPT-5、Claude 4.5、Gemini 2.5、DeepSeek-V3等</li>
+                            <li>图像生成：DALL-E 3、Stable Diffusion、Midjourney、Ideogram等</li>
+                            <li>视频生成：Sora 2、Veo、Wan等最新视频模型</li>
+                            <li>代码生成：GPT-5 Codex、Claude Code、Coding-GLM等</li>
+                            <li>嵌入模型：text-embedding-3、Jina Embeddings等</li>
+                            <li>多模态模型：GPT-4V、Claude Sonnet、Gemini Pro Vision等</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-icon-large">🔌</div>
+                    <div class="feature-content">
+                        <h3>完全兼容OpenAI接口</h3>
+                        <p>AIHubMix完全兼容OpenAI API接口标准，您无需修改现有代码，只需替换API端点和密钥即可。</p>
+                        <ul>
+                            <li>零代码迁移：直接替换baseURL即可使用</li>
+                            <li>支持所有OpenAI SDK：Python、Node.js、Java、Go等</li>
+                            <li>兼容主流AI框架：LangChain、LlamaIndex、AutoGPT等</li>
+                            <li>一键切换模型：只需修改model参数</li>
+                            <li>保持所有高级特性：流式输出、function calling、vision等</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-icon-large">⚡</div>
+                    <div class="feature-content">
+                        <h3>智能路由与负载均衡</h3>
+                        <p>AIHubMix采用先进的智能路由技术，自动选择最优的模型提供商和服务节点，确保最快的响应速度。</p>
+                        <ul>
+                            <li>自动故障转移：单个节点故障时自动切换</li>
+                            <li>全球加速：多地域部署，就近访问</li>
+                            <li>智能负载均衡：根据实时负载分配请求</li>
+                            <li>99.9%高可用性：企业级稳定性保障</li>
+                            <li>实时监控：API状态实时监控与告警</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-icon-large">🤖</div>
+                    <div class="feature-content">
+                        <h3>AI模型智能路由</h3>
+                        <p>使用aihubmix-router模型，系统会根据您的问题自动选择最合适的AI模型，无需手动切换。</p>
+                        <ul>
+                            <li>自动评估问题复杂度</li>
+                            <li>智能匹配最优模型</li>
+                            <li>平衡性能与成本</li>
+                            <li>简单问题使用快速模型，复杂问题使用强大模型</li>
+                            <li>降低平均使用成本</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-icon-large">🌐</div>
+                    <div class="feature-content">
+                        <h3>联网搜索能力</h3>
+                        <p>AIHubMix支持让任何模型具备联网搜索能力，获取最新的实时信息。</p>
+                        <ul>
+                            <li>集成Tavily搜索引擎</li>
+                            <li>模型名称添加:surfing后缀即可启用</li>
+                            <li>支持OpenAI和Gemini原生搜索</li>
+                            <li>谷歌搜索补贴价格仅为官方1/10</li>
+                            <li>实时信息获取，突破训练数据限制</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-icon-large">💾</div>
+                    <div class="feature-content">
+                        <h3>提示词缓存功能</h3>
+                        <p>支持Claude的Prompt Caching功能，大幅降低重复内容的成本。</p>
+                        <ul>
+                            <li>缓存重复使用的上下文</li>
+                            <li>最多节省90%的Token成本</li>
+                            <li>适合长上下文对话</li>
+                            <li>文档分析场景效果显著</li>
+                            <li>自动管理缓存生命周期</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-icon-large">🎨</div>
+                    <div class="feature-content">
+                        <h3>多模态AI支持</h3>
+                        <p>不仅支持文本，还全面支持图像、视频、音频等多种模态的AI模型。</p>
+                        <ul>
+                            <li>图像理解：分析图片内容、OCR识别</li>
+                            <li>图像生成：文生图、图生图、图像编辑</li>
+                            <li>视频生成：文生视频、图生视频</li>
+                            <li>语音合成：TTS文字转语音</li>
+                            <li>跨模态处理：图文混合输入输出</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-detail">
+                    <div class="feature-icon-large">🔧</div>
+                    <div class="feature-content">
+                        <h3>MCP协议支持</h3>
+                        <p>支持Model Context Protocol（MCP），让AI模型能够使用外部工具和数据源。</p>
+                        <ul>
+                            <li>支持OpenAI、Claude、Gemini的MCP实现</li>
+                            <li>扩展AI模型能力边界</li>
+                            <li>连接外部API和数据库</li>
+                            <li>实现复杂的工作流自动化</li>
+                            <li>构建更强大的AI Agent</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background: #f8fafc;">
+        <div class="container">
+            <h2 class="section-title">AIHubMix vs 直接调用官方API</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>功能特性</th>
+                        <th>AIHubMix</th>
+                        <th>直接调用官方</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>多模型支持</strong></td>
+                        <td><span class="check">✓</span> 200+模型统一接口</td>
+                        <td><span class="cross">✗</span> 需要对接多个平台</td>
+                    </tr>
+                    <tr>
+                        <td><strong>接口兼容性</strong></td>
+                        <td><span class="check">✓</span> 完全兼容OpenAI标准</td>
+                        <td><span class="cross">✗</span> 各平台接口不同</td>
+                    </tr>
+                    <tr>
+                        <td><strong>切换模型成本</strong></td>
+                        <td><span class="check">✓</span> 一行代码切换</td>
+                        <td><span class="cross">✗</span> 需要大量重构</td>
+                    </tr>
+                    <tr>
+                        <td><strong>价格优势</strong></td>
+                        <td><span class="check">✓</span> 部分模型价格更低</td>
+                        <td><span class="cross">✗</span> 官方定价</td>
+                    </tr>
+                    <tr>
+                        <td><strong>稳定性保障</strong></td>
+                        <td><span class="check">✓</span> 智能故障转移</td>
+                        <td><span class="cross">✗</span> 单点故障风险</td>
+                    </tr>
+                    <tr>
+                        <td><strong>访问限制</strong></td>
+                        <td><span class="check">✓</span> 无地域限制</td>
+                        <td><span class="cross">✗</span> 某些地区无法访问</td>
+                    </tr>
+                    <tr>
+                        <td><strong>支付方式</strong></td>
+                        <td><span class="check">✓</span> 多种支付方式</td>
+                        <td><span class="cross">✗</span> 需要国际信用卡</td>
+                    </tr>
+                    <tr>
+                        <td><strong>技术支持</strong></td>
+                        <td><span class="check">✓</span> 中文技术支持</td>
+                        <td><span class="cross">✗</span> 英文支持</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>体验AIHubMix的强大功能</h2>
+            <p>注册即送免费额度，立即开始使用</p>
+            <a href="https://aihubmix.com/?aff=P46I" class="primary-btn" target="_blank" rel="noopener">免费试用</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于AIHubMix</h3>
+                    <p>AIHubMix是领先的AI模型API聚合平台，为开发者提供统一、稳定、高效的AI模型接入服务。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>产品</h3>
+                    <ul>
+                        <li><a href="features.html">功能特性</a></li>
+                        <li><a href="pricing.html">价格对比</a></li>
+                        <li><a href="https://aihubmix.com/?aff=P46I" target="_blank" rel="noopener">模型列表</a></li>
+                        <li><a href="use-cases.html">使用案例</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="https://docs.aihubmix.com/cn" target="_blank" rel="noopener">开发文档</a></li>
+                        <li><a href="faq.html">常见问题</a></li>
+                        <li><a href="comparison.html">竞品对比</a></li>
+                        <li><a href="https://aihubmix.com/?aff=P46I" target="_blank" rel="noopener">API状态</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>法律信息</h3>
+                    <ul>
+                        <li><a href="privacy.html">隐私政策</a></li>
+                        <li><a href="terms.html">服务条款</a></li>
+                        <li><a href="disclaimer.html">免责声明</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AIHubMix.ai - AI模型API聚合平台 | 本站包含affiliate链接</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
