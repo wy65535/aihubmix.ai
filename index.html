@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIHubMix - 统一AI模型API接口平台 | 一站式AI模型聚合服务</title>
+    <meta name="description" content="AIHubMix提供统一AI模型API接口，支持GPT-4、Claude、Gemini、DeepSeek等200+主流AI模型。开发者首选的AI API聚合平台，无限并发，稳定可靠。">
+    <meta name="keywords" content="aihubmix, AI API, 统一API接口, GPT API, Claude API, AI模型聚合, 多模型API, AI开发平台, OpenAI替代方案">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://aihubmix.ai/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="AIHubMix - 统一AI模型API接口平台">
+    <meta property="og:description" content="一个接口，无限模型。支持GPT、Claude、Gemini等200+主流AI模型，开发更智能、更高效。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aihubmix.ai/">
+    <meta property="og:site_name" content="AIHubMix">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AIHubMix - 统一AI模型API接口平台">
+    <meta name="twitter:description" content="一个接口，无限模型。支持200+主流AI模型。">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "AIHubMix",
+      "applicationCategory": "DeveloperApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1250"
+      },
+      "description": "统一AI模型API接口平台，支持GPT-4、Claude、Gemini等200+主流AI模型"
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2563eb;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+        
+        .cta-button {
+            background: #2563eb;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #1d4ed8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .primary-btn, .secondary-btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .primary-btn {
+            background: #fff;
+            color: #667eea;
+        }
+        
+        .primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .secondary-btn {
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            border: 2px solid #fff;
+        }
+        
+        .secondary-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1e293b;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+        
+        .feature-card p {
+            color: #64748b;
+            line-height: 1.8;
+        }
+        
+        /* Models Section */
+        .models {
+            padding: 5rem 0;
+        }
+        
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .model-badge {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s;
+            font-weight: 600;
+            color: #334155;
+        }
+        
+        .model-badge:hover {
+            border-color: #2563eb;
+            transform: scale(1.05);
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 4rem 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-item p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Use Cases */
+        .use-cases {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+        
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .use-case-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #2563eb;
+        }
+        
+        .use-case-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+        
+        .use-case-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .use-case-card li {
+            padding: 0.5rem 0;
+            color: #64748b;
+        }
+        
+        .use-case-card li:before {
+            content: "✓ ";
+            color: #2563eb;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: #fff;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #fff;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">AIHubMix</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="features.html">功能特性</a></li>
+                    <li><a href="pricing.html">价格对比</a></li>
+                    <li><a href="comparison.html">竞品对比</a></li>
+                    <li><a href="use-cases.html">使用案例</a></li>
+                    <li><a href="faq.html">常见问题</a></li>
+                </ul>
+                <a href="https://aihubmix.com/?aff=P46I" class="cta-button" target="_blank" rel="noopener">立即开始</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>一个接口，无限AI模型</h1>
+            <p>一站式对接200+主流大模型 | 统一API接口 | 无限并发 | 开发更智能、更高效</p>
+            <div class="hero-buttons">
+                <a href="https://aihubmix.com/?aff=P46I" class="primary-btn" target="_blank" rel="noopener">免费试用</a>
+                <a href="features.html" class="secondary-btn">了解更多</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">为什么选择AIHubMix？</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>主流模型全覆盖</h3>
+                    <p>支持GPT-4、GPT-5、Claude 4.5、Gemini 2.5、DeepSeek-V3等200+主流AI模型，文本、图像、视频、嵌入模型应有尽有。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>统一API接口</h3>
+                    <p>完全兼容OpenAI接口标准，一行代码轻松切换不同模型，无需修改现有代码架构，快速集成到您的应用中。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>无限并发在线</h3>
+                    <p>99.9%高可用性保障，智能负载均衡，支持无限并发请求，确保您的AI应用永远稳定运行。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>价格实惠透明</h3>
+                    <p>按需付费，无隐藏费用。相比官方API价格更优惠，部分模型价格低至官方的1/10，大幅降低AI开发成本。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛠️</div>
+                    <h3>开发者友好</h3>
+                    <p>详细的API文档、丰富的代码示例、活跃的开发者社区，让您快速上手，轻松构建AI应用。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>安全可靠</h3>
+                    <p>企业级安全保障，数据加密传输，隐私保护，符合国际数据安全标准，让您放心使用。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Models -->
+    <section class="models">
+        <div class="container">
+            <h2 class="section-title">支持的AI模型</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: #64748b;">集成200+主流AI模型，满足您的各种需求</p>
+            <div class="models-grid">
+                <div class="model-badge">GPT-4 Turbo</div>
+                <div class="model-badge">GPT-4o</div>
+                <div class="model-badge">GPT-5</div>
+                <div class="model-badge">Claude 4.5 Opus</div>
+                <div class="model-badge">Claude Sonnet</div>
+                <div class="model-badge">Gemini 2.5 Pro</div>
+                <div class="model-badge">Gemini Flash</div>
+                <div class="model-badge">DeepSeek-V3</div>
+                <div class="model-badge">DeepSeek-R1</div>
+                <div class="model-badge">GLM-4</div>
+                <div class="model-badge">Qwen 3</div>
+                <div class="model-badge">Llama 4</div>
+                <div class="model-badge">Mistral Large</div>
+                <div class="model-badge">Command R+</div>
+                <div class="model-badge">DALL-E 3</div>
+                <div class="model-badge">Stable Diffusion</div>
+                <div class="model-badge">Midjourney</div>
+                <div class="model-badge">Sora 2</div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://aihubmix.com/?aff=P46I" class="cta-button" target="_blank" rel="noopener">查看完整模型列表</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>200+</h3>
+                    <p>AI模型支持</p>
+                </div>
+                <div class="stat-item">
+                    <h3>99.9%</h3>
+                    <p>服务可用性</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100K+</h3>
+                    <p>开发者信赖</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1B+</h3>
+                    <p>API调用次数</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="use-cases">
+        <div class="container">
+            <h2 class="section-title">应用场景</h2>
+            <div class="use-case-grid">
+                <div class="use-case-card">
+                    <h3>🤖 智能对话应用</h3>
+                    <ul>
+                        <li>智能客服系统</li>
+                        <li>AI聊天助手</li>
+                        <li>虚拟陪伴机器人</li>
+                        <li>教育辅导系统</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h3>✍️ 内容创作工具</h3>
+                    <ul>
+                        <li>AI文章生成</li>
+                        <li>营销文案创作</li>
+                        <li>社交媒体内容</li>
+                        <li>SEO优化内容</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h3>💻 代码开发助手</h3>
+                    <ul>
+                        <li>代码生成与补全</li>
+                        <li>代码审查与优化</li>
+                        <li>Bug修复建议</li>
+                        <li>技术文档生成</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h3>🎨 创意设计工具</h3>
+                    <ul>
+                        <li>AI图像生成</li>
+                        <li>视频内容制作</li>
+                        <li>设计稿创意</li>
+                        <li>艺术作品创作</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h3>📊 数据分析系统</h3>
+                    <ul>
+                        <li>智能数据解读</li>
+                        <li>报告自动生成</li>
+                        <li>趋势预测分析</li>
+                        <li>决策支持系统</li>
+                    </ul>
+                </div>
+                <div class="use-case-card">
+                    <h3>🌍 多语言应用</h3>
+                    <ul>
+                        <li>智能翻译系统</li>
+                        <li>多语言客服</li>
+                        <li>跨境电商工具</li>
+                        <li>语言学习平台</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>立即开始您的AI开发之旅</h2>
+            <p>注册即送免费额度，无需信用卡，3分钟快速接入</p>
+            <a href="https://aihubmix.com/?aff=P46I" class="primary-btn" target="_blank" rel="noopener" style="display: inline-block;">免费注册使用</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于AIHubMix</h3>
+                    <p>AIHubMix是领先的AI模型API聚合平台，为开发者提供统一、稳定、高效的AI模型接入服务。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>产品</h3>
+                    <ul>
+                        <li><a href="features.html">功能特性</a></li>
+                        <li><a href="pricing.html">价格对比</a></li>
+                        <li><a href="https://aihubmix.com/?aff=P46I" target="_blank" rel="noopener">模型列表</a></li>
+                        <li><a href="use-cases.html">使用案例</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="https://docs.aihubmix.com/cn" target="_blank" rel="noopener">开发文档</a></li>
+                        <li><a href="faq.html">常见问题</a></li>
+                        <li><a href="comparison.html">竞品对比</a></li>
+                        <li><a href="https://aihubmix.com/?aff=P46I" target="_blank" rel="noopener">API状态</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>法律信息</h3>
+                    <ul>
+                        <li><a href="privacy.html">隐私政策</a></li>
+                        <li><a href="terms.html">服务条款</a></li>
+                        <li><a href="disclaimer.html">免责声明</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AIHubMix.ai - AI模型API聚合平台 | 本站包含affiliate链接</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
